@@ -1,0 +1,159 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-6">
+            <h2 class="page-title">{{pageTitle}}</h2>
+        </div>
+        <div class="col-6">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{pageTitle}}</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-3">
+            <mat-card class="example-card">
+                <mat-card-content>
+                    <div class="row">
+                        <div class="col">
+                            <p class="total-count">12</p>
+                            <p>Projects</p>
+                        </div>
+                        <div class="col">
+                            <ejs-sparkline #sales id="sales1" height="85px" width="80%" [markerSettings]="salmarkerSettings" [axisSettings]="salaxisSettings" [tooltipSettings]="saltooltipSettings" type='Column' [dataSource]='salData' xName='xval' yName='yval' valueType='Category'
+                                (onchange)="onchange($event)"></ejs-sparkline>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div class="col-3">
+            <mat-card class="example-card">
+                <mat-card-content>
+                    <div class="row">
+                        <div class="col-7">
+                            <p class="total-count">42.5 M</p>
+                            <p>Total Budget</p>
+                        </div>
+                        <div class="col-5 text-left">
+                            <ejs-sparkline id="pie1" height="80px" width="100%" type="Pie" valueType="Category" [dataSource]="pieData1" [tooltipSettings]="pietooltipSettings" xName="x" yName="y" style="margin-left: -15px"></ejs-sparkline>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div class="col-3">
+            <mat-card class="example-card">
+                <mat-card-content>
+                    <div class="row">
+                        <div class="col-6 pr-0">
+                            <p class="total-count">21.2 M</p>
+                            <p>Budget Consumed</p>
+                        </div>
+                        <div class="col-6 text-left px-0">
+                            <div style="display: block; margin-top: 10px;">
+                                <canvas baseChart [data]="doughnutChartData" [chartType]="doughnutChartType" [labels]="doughnutChartLabels" [options]="donutOptions" [colors]="donutColors">
+                                  </canvas>
+                            </div>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div class="col-3">
+            <mat-card class="example-card">
+                <mat-card-content>
+                    <div class="row">
+                        <div class="col-12 custom-progress">
+                            <p class="mb-0">Planned (5)</p>
+                            <p class="mb-1">
+                                <ngb-progressbar type="warning" [value]="65" [striped]="true" [animated]="true"><i>65%</i></ngb-progressbar>
+                            </p>
+                            <p class="mb-0">Active (4)</p>
+                            <p class="mb-1">
+                                <ngb-progressbar type="success" [value]="75" [striped]="true" [animated]="true"><i>75%</i></ngb-progressbar>
+                            </p>
+                            <p class="mb-0">Closed (3)</p>
+                            <p class="mb-1">
+                                <ngb-progressbar type="danger" [value]="45" [striped]="true" [animated]="true"><i>45%</i></ngb-progressbar>
+                            </p>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-4">
+            <mat-card class="list-card">
+                <mat-card-title>Planned Projects</mat-card-title>
+                <mat-divider></mat-divider>
+                <div class="list-card-scroll">
+                    <mat-card-content class="container-fluid mb-2 border-bottom" *ngFor="let project of plannedProjectData">
+                        <div class="container-fluid">
+                            <div class="row py-2">
+                                <div class="col-6 px-0 easyPieChartArea">
+                                    <easy-pie-chart [percent]="project.percent" [options]="project.pieOptions"></easy-pie-chart>
+                                    <p class="easy-pie-label">{{project.percent}}</p>
+                                </div>
+                                <div class="col-6 px-0 mt-2">
+                                    <p class="mb-2"><a href="project-1.html" class="proTitle"><b>{{project.project}}<i class="fas fa-chevron-circle-right"></i></b></a></p>
+                                    <p><span>Total Budget:</span> $ {{project.budget}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-card-content>
+                </div>
+            </mat-card>
+        </div>
+        <div class="col-4">
+            <mat-card class="list-card">
+                <mat-card-title>Active Projects</mat-card-title>
+                <mat-divider></mat-divider>
+                <div class="list-card-scroll">
+                    <mat-card-content class="container-fluid mb-2 border-bottom" *ngFor="let project of plannedProjectData">
+                        <div class="container-fluid">
+                            <div class="row py-2">
+                                <div class="col-6 px-0 easyPieChartArea">
+                                    <easy-pie-chart [percent]="project.percent" [options]="project.pieOptions"></easy-pie-chart>
+                                    <p class="easy-pie-label">{{project.percent}}</p>
+                                </div>
+                                <div class="col-6 px-0 mt-2">
+                                    <p class="mb-2"><a href="project-1.html" class="proTitle"><b>{{project.project}}<i class="fas fa-chevron-circle-right"></i></b></a></p>
+                                    <p><span>Total Budget:</span> $ {{project.budget}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-card-content>
+                </div>
+            </mat-card>
+        </div>
+        <div class="col-4">
+            <mat-card class="list-card">
+                <mat-card-title>Closed Projects</mat-card-title>
+                <mat-divider></mat-divider>
+                <div class="list-card-scroll">
+                    <mat-card-content class="container-fluid mb-2 border-bottom" *ngFor="let project of plannedProjectData">
+                        <div class="container-fluid">
+                            <div class="row py-2">
+                                <div class="col-6 px-0 easyPieChartArea">
+                                    <easy-pie-chart [percent]="project.percent" [options]="project.pieOptions"></easy-pie-chart>
+                                    <p class="easy-pie-label">{{project.percent}}</p>
+                                </div>
+                                <div class="col-6 px-0 mt-2">
+                                    <p class="mb-2"><a href="project-1.html" class="proTitle"><b>{{project.project}}<i class="fas fa-chevron-circle-right"></i></b></a></p>
+                                    <p><span>Total Budget:</span> $ {{project.budget}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-card-content>
+                </div>
+            </mat-card>
+        </div>
+
+    </div>
+
+</div>

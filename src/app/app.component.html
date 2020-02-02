@@ -1,0 +1,91 @@
+<mat-sidenav-container class="sidenav-container">
+
+    <mat-sidenav #drawer mode="side" opened role="navigation">
+        <a class="navbar-brand" href="index.html">
+            <img src="./assets/img/logo-igt.png" alt="homepage" class="dark-logo" height="45" />
+        </a>
+
+        <mat-nav-list>
+            <p class="sidenav-header"> IGT - Leadership Board </p>
+            <a mat-list-item routerLink='/home' routerLinkActive="active">
+                <mat-icon aria-hidden="false" aria-label="Example settings_input_svideo icon">settings_input_svideo</mat-icon> Dashboard</a>
+        </mat-nav-list>
+        <mat-nav-list>
+            <p class="sidenav-header"> Lottery </p>
+            <a mat-list-item routerLink='/lotteryDashboard' routerLinkActive="active">
+                <mat-icon aria-hidden="false" aria-label="Example settings_input_svideo icon">settings_input_svideo</mat-icon> Dashboard</a>
+            <a mat-list-item routerLink='/customerDashboard' routerLinkActive="active">
+                <mat-icon aria-hidden="false" aria-label="Example settings_input_svideo icon" fontSet="material-icons-outlined">supervisor_account</mat-icon>Customer Facing</a>
+            <a mat-list-item routerLink='/first'>
+                <mat-icon aria-hidden="false" aria-label="Example settings_input_svideo icon" fontSet="material-icons-outlined">emoji_objects</mat-icon>R & D</a>
+        </mat-nav-list>
+        <mat-nav-list>
+            <p class="sidenav-header"> Gaming </p>
+            <a mat-list-item routerLink='/first'>
+                <mat-icon aria-hidden="false" aria-label="Example settings_input_svideo icon">settings_input_svideo</mat-icon> Dashboard</a>
+            <mat-accordion>
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            <mat-icon aria-hidden="false" aria-label="Example settings_input_svideo icon" fontSet="material-icons-outlined">casino</mat-icon> Casino
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <mat-nav-list class="subnav">
+                        <a mat-list-item routerLink='/first'>
+                            <mat-icon aria-hidden="false" aria-label="Example settings_input_svideo icon">settings_input_svideo</mat-icon> Dashboard</a>
+                        <a mat-list-item routerLink='/first'>
+                            <mat-icon aria-hidden="false" aria-label="Example settings_input_svideo icon" fontSet="material-icons-outlined">supervisor_account</mat-icon>Customer Facing</a>
+                        <a mat-list-item routerLink='/first'>
+                            <mat-icon aria-hidden="false" aria-label="Example settings_input_svideo icon" fontSet="material-icons-outlined">emoji_objects</mat-icon>R & D</a>
+                    </mat-nav-list>
+                </mat-expansion-panel>
+
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            <mat-icon aria-hidden="false" aria-label="Example settings_input_svideo icon" fontSet="material-icons-outlined">pages</mat-icon> VLT
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <mat-nav-list class="subnav">
+                        <a mat-list-item routerLink='/first'>
+                            <mat-icon aria-hidden="false" aria-label="Example settings_input_svideo icon">settings_input_svideo</mat-icon> Dashboard</a>
+                        <a mat-list-item routerLink='/first'>
+                            <mat-icon aria-hidden="false" aria-label="Example settings_input_svideo icon" fontSet="material-icons-outlined">supervisor_account</mat-icon>Customer Facing</a>
+                        <a mat-list-item routerLink='/first'>
+                            <mat-icon aria-hidden="false" aria-label="Example settings_input_svideo icon" fontSet="material-icons-outlined">emoji_objects</mat-icon>R & D</a>
+                    </mat-nav-list>
+                </mat-expansion-panel>
+            </mat-accordion>
+
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content ngClass="sidenavOpen ? 'sidenavOpen' : ''">
+        <mat-toolbar>
+            <mat-toolbar-row>
+                <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle(); sidenavOpen = !sidenavOpen" class="sidenav-toggle-btn">
+                <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+              </button>
+                <form>
+                    <input type="text" class="search-input" placeholder="Search" />
+                </form>
+                <span class="toolbar-spacer"></span>
+                <button type="button" aria-label="Home" mat-icon-button>
+                  <mat-icon fontSet="material-icons-outlined" aria-label="Home icon">home</mat-icon>
+                </button>
+                <button type="button" aria-label="call" mat-icon-button>
+                  <mat-icon fontSet="material-icons-outlined" aria-label="call icon">call</mat-icon>
+                </button>
+                <button type="button" aria-label="help_outline" mat-icon-button>
+                    <mat-icon fontSet="material-icons-outlined" aria-label="help_outline icon">help_outline</mat-icon>
+                  </button>
+            </mat-toolbar-row>
+        </mat-toolbar>
+        <main class="main-content">
+            <div class="content-wrapper-before gradient-45deg-indigo-purple">
+                <particles [params]="particleParams" [style]="particleStyle" [width]="particleWidth" [height]="particleHeight"></particles>
+            </div>
+            <router-outlet></router-outlet>
+        </main>
+
+    </mat-sidenav-content>
+</mat-sidenav-container>

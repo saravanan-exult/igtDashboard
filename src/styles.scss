@@ -1,0 +1,300 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$igtPmoDashboard-primary: mat-palette($mat-indigo);
+$igtPmoDashboard-accent: mat-palette($mat-pink, A200, A100, A400);
+// The warn palette is optional (defaults to red).
+$igtPmoDashboard-warn: mat-palette($mat-red);
+// Create the theme object (a Sass map containing all of the palettes).
+$igtPmoDashboard-theme: mat-light-theme($igtPmoDashboard-primary, $igtPmoDashboard-accent, $igtPmoDashboard-warn);
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($igtPmoDashboard-theme);
+
+/* You can add global styles to this file, and also import other style files */
+
+$sidenavWidth: 250px;
+$grad1: #303f9f;
+$grad2: rgb(0, 189, 174);
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: 'Muli', sans-serif;
+    background: #eef5f9;
+}
+
+mat-toolbar.mat-toolbar {
+    // margin-left: $sidenavWidth;
+    // width: calc(100% - #{$sidenavWidth});
+}
+
+mat-sidenav-container.sidenav-container {
+    height: 100%;
+    mat-sidenav {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: $sidenavWidth;
+        box-shadow: 1px 0px 20px rgba(0, 0, 0, 0.08);
+        border: 0;
+        .navbar-brand {
+            display: block;
+            text-align: center;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+        .sidenav-header {
+            font-size: .7rem;
+            font-weight: 400;
+            line-height: 30px;
+            margin: 0;
+            color: #969696;
+            padding: 0 16px;
+            text-transform: uppercase;
+        }
+        mat-nav-list {
+            &.mat-list-base {
+                padding-top: 8px;
+                padding-bottom: 8px;
+                box-shadow: 0 -1px 2px 0 rgba(0, 0, 0, .05);
+            }
+            .mat-list-item,
+            .mat-expansion-panel-header {
+                font-size: 14px;
+            }
+            mat-icon {
+                font-size: 1.25rem;
+                color: rgba(0, 0, 0, .54);
+                display: inline-block;
+                margin-right: 10px;
+                line-height: 24px;
+            }
+            &.subnav {
+                box-shadow: none;
+                &.mat-list-base {
+                    padding-top: 0;
+                    padding-bottom: 0;
+                }
+            }
+            .mat-list-item {
+                &.active {
+                    position: relative;
+                    color: #fff;
+                    z-index: 1;
+                    &::before {
+                        content: "";
+                        background: linear-gradient(45deg, $grad1, $grad2);
+                        box-shadow: 1px 1px 5px 0 rgba(123, 31, 162, .5);
+                        margin-right: 10px;
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        bottom: 0;
+                        right: 5px;
+                        z-index: 0;
+                        border-radius: 0 3px 3px 0;
+                    }
+                    mat-icon {
+                        color: #fff;
+                    }
+                }
+            }
+        }
+        .mat-list-base .mat-list-item,
+        .mat-list-base .mat-list-option {
+            height: 42px;
+        }
+        .mat-list-item,
+        .mat-expansion-panel-header {
+            font-family: 'Muli', sans-serif;
+        }
+        .mat-expansion-panel:not([class*=mat-elevation-z]) {
+            box-shadow: none;
+        }
+        .mat-expansion-panel-header {
+            padding: 0 16px;
+        }
+        .mat-expansion-panel-body {
+            padding: 0 16px 16px;
+            margin-top: -10px;
+        }
+        mat-expansion-panel {
+            border-radius: 0 !important;
+            &.mat-expanded {
+                background: rgba(0, 0, 0, .035);
+                .mat-expansion-panel-header.mat-expanded:focus,
+                .mat-expansion-panel-header.mat-expanded:hover {
+                    background: rgba(0, 0, 0, 0) !important;
+                }
+            }
+        }
+    }
+}
+
+mat-toolbar.mat-toolbar {
+    background: linear-gradient(45deg, $grad1, $grad2)!important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    .sidenav-toggle-btn,
+    .mat-icon {
+        color: #fff;
+        outline: none;
+    }
+    button {
+        outline: none;
+    }
+}
+
+.mat-drawer-content {
+    background: #eef5f9;
+}
+
+.search-input {
+    color: #fff;
+    border: 1px solid rgba(230, 230, 230, .05);
+    background: rgba(230, 230, 230, .2);
+    padding: 0 10px 0 10px;
+    border-radius: 30px;
+    outline: 0;
+    font-size: 14px;
+    width: 300px;
+    &::placeholder {
+        color: rgba(255, 255, 255, 0.3);
+    }
+}
+
+.toolbar-spacer {
+    flex: 1 1 auto;
+}
+
+.gradient-45deg-indigo-purple {
+    background: -webkit-linear-gradient(45deg, $grad1, $grad2)!important;
+    background: linear-gradient(45deg, $grad1, $grad2)!important;
+}
+
+.main-content {
+    padding: 20px 10px;
+    .content-wrapper-before {
+        position: absolute;
+        z-index: -1;
+        top: 64px;
+        left: 0;
+        width: 100%;
+        height: 165px;
+        -webkit-transition: .3s ease all;
+        transition: .3s ease all;
+    }
+}
+
+.total-count {
+    font-size: 2.25rem;
+    margin-bottom: 0.3rem;
+    font-weight: 300;
+    &.small {
+        font-size: 1.8rem;
+        margin-bottom: 0;
+    }
+}
+
+.custom-progress {
+    font-size: 0.7rem;
+    .progress {
+        height: 0.7rem;
+        font-size: 0.6rem;
+    }
+}
+
+.page-title {
+    color: #fff;
+    margin-bottom: 2rem;
+    font-weight: 300;
+}
+
+.breadcrumb {
+    background: transparent;
+    justify-content: flex-end;
+}
+
+.breadcrumb-item {
+    a {
+        color: #fff;
+    }
+}
+
+.breadcrumb-item.active {
+    color: #fff;
+}
+
+.breadcrumb-item+.breadcrumb-item::before {
+    color: #fff;
+}
+
+.icon-card {
+    position: relative;
+    padding-top: 10px;
+    padding-bottom: 15px;
+    border-radius: 0;
+    border-width: 0 1px 0 0;
+    border-style: dashed;
+    &:last-child {
+        border-right-width: 0;
+    }
+    .mat-icon {
+        position: absolute;
+        right: 25px;
+        font-size: 2rem;
+        top: 50%;
+        transform: translateY(-100%);
+        color: rgb(0, 189, 174);
+    }
+}
+
+.progress-group {
+    margin-bottom: 1rem;
+}
+
+.mat-card-footer {
+    background: rgba(156, 108, 108, 0.07);
+    .description-block {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-size: 80%;
+    }
+}
+
+.list-card {
+    .mat-card-title {
+        font-size: 20px;
+        font-weight: 400;
+    }
+    .list-card-scroll {
+        max-height: 330px;
+        overflow-y: auto;
+    }
+}
+
+.easyPieChartArea {
+    position: relative;
+    .easy-pie-label {
+        display: inline-block;
+        position: absolute;
+        left: 50px;
+        top: 36px;
+        transform: translate(-50%);
+        margin-bottom: 0;
+        font-size: 1.3rem;
+        font-weight: 500;
+    }
+}

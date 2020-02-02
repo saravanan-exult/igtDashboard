@@ -1,0 +1,279 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-6">
+            <h2 class="page-title">{{pageTitle}}</h2>
+        </div>
+        <div class="col-6">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{pageTitle}}</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-3">
+            <mat-card class="example-card">
+                <mat-card-content>
+                    <div class="row">
+                        <div class="col">
+                            <p class="total-count">52</p>
+                            <p>Total Projects</p>
+                        </div>
+                        <div class="col">
+                            <ejs-sparkline #sales id="sales1" height="85px" width="80%" [markerSettings]="salmarkerSettings" [axisSettings]="salaxisSettings" [tooltipSettings]="saltooltipSettings" type='Column' [dataSource]='salData' xName='xval' yName='yval' valueType='Category'
+                                (onchange)="onchange($event)"></ejs-sparkline>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div class="col-3">
+            <mat-card class="example-card">
+                <mat-card-content>
+                    <div class="row">
+                        <div class="col-7">
+                            <p class="total-count">190 M</p>
+                            <p>Total Budget</p>
+                        </div>
+                        <div class="col-5 text-left">
+                            <ejs-sparkline id="pie1" height="80px" width="100%" type="Pie" valueType="Category" [dataSource]="pieData1" [tooltipSettings]="pietooltipSettings" xName="x" yName="y" style="margin-left: -15px"></ejs-sparkline>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div class="col-3">
+            <mat-card class="example-card">
+                <mat-card-content>
+                    <div class="row">
+                        <div class="col-6 pr-0">
+                            <p class="total-count">120 M</p>
+                            <p>Budget Consumed</p>
+                        </div>
+                        <div class="col-6 text-left px-0">
+                            <div style="display: block; margin-top: 10px;">
+                                <canvas baseChart [data]="doughnutChartData" [chartType]="doughnutChartType" [labels]="doughnutChartLabels" [options]="donutOptions" [colors]="donutColors">
+                              </canvas>
+                            </div>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div class="col-3">
+            <mat-card class="example-card">
+                <mat-card-content>
+                    <div class="row">
+                        <div class="col-12 custom-progress">
+                            <p class="mb-0">Planned (10)</p>
+                            <p class="mb-1">
+                                <ngb-progressbar type="warning" [value]="65" [striped]="true" [animated]="true"><i>65%</i></ngb-progressbar>
+                            </p>
+                            <p class="mb-0">Active (12)</p>
+                            <p class="mb-1">
+                                <ngb-progressbar type="success" [value]="75" [striped]="true" [animated]="true"><i>75%</i></ngb-progressbar>
+                            </p>
+                            <p class="mb-0">Closed (7)</p>
+                            <p class="mb-1">
+                                <ngb-progressbar type="danger" [value]="45" [striped]="true" [animated]="true"><i>45%</i></ngb-progressbar>
+                            </p>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-9">
+            <mat-card class="example-card py-1">
+                <mat-tab-group>
+                    <mat-tab label="Customer Facing">
+                        <mat-card-content class="container-fluid mb-2">
+                            <div class="row mt-3">
+                                <div class="card col-3 icon-card">
+                                    <div class="card-body p-0">
+                                        <mat-icon aria-hidden="false" aria-label="Example card_travel icon">card_travel</mat-icon>
+                                        <p class="total-count small">34</p>
+                                        <p class="mb-2">Projects</p>
+                                        <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
+                                    </div>
+                                </div>
+                                <div class="card col-3 icon-card">
+                                    <div class="card-body p-0">
+                                        <mat-icon aria-hidden="false" aria-label="Example account_balance_wallet icon" fontSet="material-icons-outlined">account_balance_wallet</mat-icon>
+                                        <p class="total-count small">125.5 M</p>
+                                        <p class="mb-2">Total Budget</p>
+                                        <mat-progress-bar mode="determinate" value="80"></mat-progress-bar>
+                                    </div>
+                                </div>
+                                <div class="card col-3 icon-card">
+                                    <div class="card-body p-0">
+                                        <mat-icon aria-hidden="false" aria-label="Example euro_symbol icon" fontSet="material-icons-outlined">euro_symbol</mat-icon>
+                                        <p class="total-count small">92.8 M</p>
+                                        <p class="mb-2">Budget Consumed</p>
+                                        <mat-progress-bar mode="determinate" value="55"></mat-progress-bar>
+                                    </div>
+                                </div>
+                                <div class="card col-3 icon-card">
+                                    <div class="card-body p-0">
+                                        <ejs-sparkline id="pie2" height="60px" width="100%" type="Pie" valueType="Category" [dataSource]="pieData1" [tooltipSettings]="pietooltipSettings" xName="x" yName="y"></ejs-sparkline>
+                                        <p class="text-center mb-0">Project RAG Status</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </mat-card-content>
+                    </mat-tab>
+                    <mat-tab label="R & D">
+                        <mat-card-content class="container-fluid mb-2">
+                            <div class="row mt-3">
+                                <div class="card col-3 icon-card">
+                                    <div class="card-body p-0">
+                                        <mat-icon aria-hidden="false" aria-label="Example card_travel icon">card_travel</mat-icon>
+                                        <p class="total-count small">18</p>
+                                        <p class="mb-2">Projects</p>
+                                        <mat-progress-bar mode="determinate" value="20"></mat-progress-bar>
+                                    </div>
+                                </div>
+                                <div class="card col-3 icon-card">
+                                    <div class="card-body p-0">
+                                        <mat-icon aria-hidden="false" aria-label="Example account_balance_wallet icon" fontSet="material-icons-outlined">account_balance_wallet</mat-icon>
+                                        <p class="total-count small">64.5 M</p>
+                                        <p class="mb-2">Total Budget</p>
+                                        <mat-progress-bar mode="determinate" value="35"></mat-progress-bar>
+                                    </div>
+                                </div>
+                                <div class="card col-3 icon-card">
+                                    <div class="card-body p-0">
+                                        <mat-icon aria-hidden="false" aria-label="Example euro_symbol icon" fontSet="material-icons-outlined">euro_symbol</mat-icon>
+                                        <p class="total-count small">47.7 M</p>
+                                        <p class="mb-2">Budget Consumed</p>
+                                        <mat-progress-bar mode="determinate" value="65"></mat-progress-bar>
+                                    </div>
+                                </div>
+                                <div class="card col-3 icon-card">
+                                    <div class="card-body p-0">
+                                        <!-- <ejs-sparkline id="pie3" height="60px" width="100%" type="Pie" valueType="Category" [dataSource]="pieData1" [tooltipSettings]="pietooltipSettings" xName="x" yName="y"></ejs-sparkline>
+                                        <p class="text-center mb-0">Project RAG Status</p> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </mat-card-content>
+                    </mat-tab>
+                </mat-tab-group>
+            </mat-card>
+        </div>
+
+        <div class="col-3">
+            <mat-card class="example-card">
+                <mat-card-content>
+                    <h6 class="text-center mb-2">Project Category</h6>
+                    <div style="display: block; margin-bottom: 3px;">
+                        <canvas baseChart [data]="doughnutChartData1" [chartType]="doughnutChartType" [labels]="doughnutChartLabels1" [options]="donutOptions1" [colors]="donutColors1">
+                        </canvas>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-12">
+            <mat-card class="example-card">
+                <mat-card-header>
+                    <mat-card-title>Monthly Recap Report</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-9">
+                                <div style="display: block;">
+                                    <canvas baseChart [chartType]="'line'" [datasets]="areaChartData" [labels]="areaChartLabels" [options]="areaChartOptions" [legend]="true" (chartClick)="onChartClick($event)" style="max-height: 300px">
+                                    </canvas>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <p class="text-center">
+                                    <strong>Project Status</strong>
+                                </p>
+
+                                <div class="progress-group">
+                                    Lottery
+                                    <span class="float-right"><b>80%</b></span>
+                                    <ngb-progressbar type="success" [value]="80" height="12px" [striped]="true" [animated]="true"></ngb-progressbar>
+                                </div>
+                                <!-- /.progress-group -->
+
+                                <div class="progress-group">
+                                    Gaming
+                                    <span class="float-right"><b>75%</b></span>
+                                    <ngb-progressbar type="info" [value]="75" height="12px" [striped]="true" [animated]="true"></ngb-progressbar>
+                                </div>
+
+                                <!-- /.progress-group -->
+                                <div class="progress-group">
+                                    Customer Facing
+                                    <span class="float-right"><b>60%</b></span>
+                                    <ngb-progressbar type="warning" [value]="60" height="12px" [striped]="true" [animated]="true"></ngb-progressbar>
+                                </div>
+
+                                <!-- /.progress-group -->
+                                <div class="progress-group">
+                                    R&amp;D
+                                    <span class="float-right"><b>50%</b></span>
+                                    <ngb-progressbar type="danger" [value]="50" height="12px" [striped]="true" [animated]="true"></ngb-progressbar>
+                                </div>
+                                <!-- /.progress-group -->
+                            </div>
+                        </div>
+                    </div>
+
+                </mat-card-content>
+                <mat-card-footer>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-3 col-6">
+                                <div class="description-block border-right">
+                                    <span class="description-percentage text-success"><i class="fas fa-caret-up"></i> 17%</span>
+                                    <h5 class="description-header">$118 MILLION</h5>
+                                    <span class="description-text">TOTAL REVENUE</span>
+                                </div>
+                                <!-- /.description-block -->
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-sm-3 col-6">
+                                <div class="description-block border-right">
+                                    <span class="description-percentage text-warning"><i class="fas fa-caret-left"></i> 0%</span>
+                                    <h5 class="description-header">$47 MILLION</h5>
+                                    <span class="description-text">TOTAL COST</span>
+                                </div>
+                                <!-- /.description-block -->
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-sm-3 col-6">
+                                <div class="description-block border-right">
+                                    <span class="description-percentage text-success"><i class="fas fa-caret-up"></i> 20%</span>
+                                    <h5 class="description-header">$87 MILLION</h5>
+                                    <span class="description-text">TOTAL PROFIT</span>
+                                </div>
+                                <!-- /.description-block -->
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-sm-3 col-6">
+                                <div class="description-block">
+                                    <span class="description-percentage text-danger"><i class="fas fa-caret-down"></i> 18%</span>
+                                    <h5 class="description-header">63%</h5>
+                                    <span class="description-text">OVERALL COMPLETION</span>
+                                </div>
+                                <!-- /.description-block -->
+                            </div>
+                        </div>
+                    </div>
+                </mat-card-footer>
+            </mat-card>
+        </div>
+    </div>
+</div>
